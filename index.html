@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hat Project 🎩</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -45,6 +44,7 @@
       gap: 1.5rem;
       margin: 0;
       padding: 0;
+      transition: max-height 0.3s ease;
     }
     nav ul li a {
       text-decoration: none;
@@ -66,7 +66,21 @@
       width: 100%;
     }
 
-    /* Hero Section */
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary);
+      transition: all 0.3s;
+    }
+
+    /* Hero */
     .hero {
       height: 90vh;
       display: flex;
@@ -198,37 +212,33 @@
 
     @media (max-width: 768px) {
       nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
       }
       nav ul {
-        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
         width: 100%;
+        flex-direction: column;
+        background: white;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+      }
+      nav ul.open {
+        max-height: 500px; /* assez pour tous les liens */
       }
       nav ul li {
         width: 100%;
+        text-align: center;
       }
       nav ul li a {
+        padding: 1rem 0;
         display: block;
-        padding: 0.5rem 0;
       }
-      .hero {
-        height: auto;
-        padding: 3rem 1.5rem;
-      }
-      .hero h2 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 0.95rem;
-      }
-      .cards {
-        grid-template-columns: 1fr;
-      }
-      .card img {
-        max-height: 200px;
-        object-fit: cover;
+      .hamburger {
+        display: flex;
       }
     }
 
@@ -257,7 +267,12 @@
   <!-- Navbar -->
   <nav>
     <h1>The Hat Project 🎩</h1>
-    <ul>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#hat">Our Hat</a></li>
       <li><a href="#mental-health">Mental Health</a></li>
@@ -359,6 +374,16 @@
     }
     window.addEventListener("scroll", revealOnScroll);
     window.addEventListener("load", revealOnScroll);
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      // animation hamburger
+      hamburger.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
