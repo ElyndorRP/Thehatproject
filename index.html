@@ -172,6 +172,84 @@
       from { opacity: 0; transform: translateY(40px);}
       to { opacity: 1; transform: translateY(0);}
     }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      nav h1 {
+        font-size: 1.3rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      section {
+        margin: 3rem 1rem;
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        display: block;
+        padding: 0.5rem 0;
+      }
+      .hero {
+        height: auto;
+        padding: 3rem 1.5rem;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .card img {
+        max-height: 200px;
+        object-fit: cover;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      section p {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -201,8 +279,6 @@
     <h2>About Our Project</h2>
     <p>We designed a bowler hat 🎩 to raise awareness about mental health. 
        This symbol helps open conversations, break stigma, and spread kindness.</p>
-
-    <!-- Image Bowler Hat -->
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Bowler_hat_icon.png" 
          alt="Bowler Hat" 
          style="margin-top:20px; border-radius:12px; max-width:200px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
